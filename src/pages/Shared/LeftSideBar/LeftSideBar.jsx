@@ -14,7 +14,7 @@ const LeftSideBar = () => {
       <hr />
       <div className="ps-3">
         {
-          catagores.map(n => <Link className='text-decoration-none text-black' key={n.id}><p>{n.name}</p></Link>)
+          catagores.map(category => <Link to={`/category/${category.id}`} className='text-decoration-none text-black' key={category.id}><p>{category.name}</p></Link>)
         }
       </div>
 
