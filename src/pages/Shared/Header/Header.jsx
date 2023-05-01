@@ -7,11 +7,17 @@ import { Link } from 'react-router-dom';
 import { authContext } from '../../../provider/AuthProvider';
 
 const Header = () => {
-  const { user } = useContext(authContext)
+  const { logdInUser, logOut } = useContext(authContext)
+  console.log(logdInUser)
+
+  const handleLogOut = () => {
+    logOut()
+  }
+
   return (
     <Container>
       <div className='text-center '>
-        <p>I am {user.displayName}</p>
+        <p>I am {logdInUser?.email}</p>
         <img className="mx-auto" src={logo} />
         <b className="p-1">Journalism Without Fear or Favour</b>
         <p>{moment().format('dddd, MMMM Do YYYY')}</p>
@@ -33,8 +39,12 @@ const Header = () => {
               <Nav.Link href="#pricing">Carrier</Nav.Link>
             </Nav>
             <Nav className='d-flex gap-3'>
-              <Button> <Nav.Link href="#deets">{user.displayName}</Nav.Link></Button>
-              <Link to="/signIn"> <Nav.Link href="#deets">login</Nav.Link></Link>
+              {
+                logdInUser && <Button onClick={handleLogOut}> <Nav.Link href="#deets">logOut</Nav.Link></Button>
+
+              }
+
+              <Link to="/signIn">  <Nav.Link href="#deets">login</Nav.Link></Link>
             </Nav>
           </Navbar.Collapse>
         </Container>
