@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { authContext } from '../../provider/AuthProvider';
 
 const Login = () => {
+  const { signIn } = useContext(authContext)
+  const handleSignIn = (e) => {
+    e.preventDefault()
+    const email = e.target.email.value;
+    const password = e.target.password.value;
+    console.log('log in')
+    signIn(email, password)
+      .then(res => {
+        console.log(res.user)
+      })
+      .catch(err => {
+        console.log(err.message)
+      })
+  }
   return (
     <div className='w-50 mx-auto p-4'>
       <h3> Your log in here </h3>
-      <Form >
+      <Form onSubmit={handleSignIn} >
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Email address</Form.Label>
           <Form.Control name='email' type="email" placeholder="Enter email" />

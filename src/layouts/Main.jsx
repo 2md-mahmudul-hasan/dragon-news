@@ -7,6 +7,7 @@ import LeftSideBar from '../pages/Shared/LeftSideBar/LeftSideBar';
 // import Category from '../pages/Home/Category/Category';
 import { Outlet } from 'react-router-dom';
 
+
 const Main = () => {
   return (
     <div>

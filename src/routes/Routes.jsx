@@ -21,6 +21,14 @@ const router = createBrowserRouter([
         path: '/category/:id',
         element: <Category></Category>,
         loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`)
+      },
+      {
+        path: '/signIn',
+        element: <Login></Login>
+      },
+      {
+        path: "/register",
+        element: <Register></Register>
       }
     ]
   },
@@ -35,14 +43,7 @@ const router = createBrowserRouter([
       }
     ]
   },
-  {
-    path: '/signIn',
-    element: <Login></Login>
-  },
-  {
-    path: "/register",
-    element: <Register></Register>
-  }
+
 ])
 
 export default router;
